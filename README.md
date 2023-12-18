@@ -1,5 +1,7 @@
 # cadastroBrincJava
 
+Código desenvolvido usando **arquitetura em camadas**.
+
 Atividade Mapa da disciplina de Programação de Sistemas II
 
 Em um shopping há um espaço de diversão para que os clientes podem deixar suas crianças enquanto fazem compras. Desenvolva um sistema com uma interface Java Swing para realizar o cadastro, o controle e a cobrança do tempo utilizado pelas crianças no brinquedo.
