@@ -93,25 +93,33 @@ public class TelaCrianca extends JFrame {
 		btnAvanc.setForeground(Color.BLACK);
 		btnAvanc.setFont(new Font("Arial", Font.PLAIN, 11));
 		btnAvanc.setBackground(UIManager.getColor("Button.background"));
+		// Evento para o botão avançar
 		btnAvanc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Instancia e preenche um objeto CriancaEntity
 				CriancaEntity crianca = new CriancaEntity();
 				crianca.setResponsavel(responsavel);
 				crianca.setNome(txtNome.getText());
 				crianca.setDataNascimento(txtDataNascimento.getText(), "dd/MM/yyyy");
 				crianca.setSexo(txtSexo.getText());
 				
+				// Intancia o controler
 				CriancaControler criancaControler = new CriancaControler();
+				// Tenta cadastrar, retorna uma exceção cado não consiga
 				Exception criancaMuitoVelha = criancaControler.cadastrarCrianca(crianca);
+				// Mensagem de sucesso
 				String menssagem = String.format("Criança %s cadastrado com SUCESSO!!", crianca.getNome());
-				
+				// Verifica se foi retornada uma exceção
 				if (criancaMuitoVelha != null) {
 					menssagem = criancaMuitoVelha.getMessage();
 					JOptionPane.showMessageDialog(btnAvanc, menssagem, "ERRO!", 2);
 				}
+				// Se não, avança para a proxima tela
 				else {
+					// Instancia a telaEstadia
 					TelaEstadia telaEstadia = new TelaEstadia(responsavel, crianca);
 					telaEstadia.setVisible(true);
+					// Fecha a tela atual
 					dispose();
 					JOptionPane.showMessageDialog(btnAvanc, menssagem);
 				}

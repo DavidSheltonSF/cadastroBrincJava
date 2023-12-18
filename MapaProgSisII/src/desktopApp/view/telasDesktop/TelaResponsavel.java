@@ -103,8 +103,10 @@ public class TelaResponsavel extends JFrame {
 		JButton btnAvanc = new JButton("Avançar");
 		btnAvanc.setBounds(344, 230, 88, 23);
 		btnAvanc.setBackground(UIManager.getColor("Button.background"));
+		// Evento para o botão avançar
 		btnAvanc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Instancia e preenche um objeto ResponsavelEntity
 				ResponsavelEntity responsavel = new ResponsavelEntity();
 				responsavel.setNome(txtNome.getText());
 				responsavel.setCPF(txtCPF.getText());
@@ -113,17 +115,23 @@ public class TelaResponsavel extends JFrame {
 				responsavel.setEmail(txtEmail.getText());
 				responsavel.setDataNascimento(txtDataNascimento.getText(), "dd/MM/yyyy");
 				
+				// Intancia o controler
 				ResponsavelControler responsavelControler = new ResponsavelControler();
+				// Tenta cadastrar, retorna uma exceção cado não consiga
 				Exception respMenorDeIdade = responsavelControler.cadastrarResponsavel(responsavel);
+				// Mensagem de sucesso
 				String menssagem = String.format("Responsável %s cadastrado com SUCESSO!!", responsavel.getNome());
-				
+				// Verifica se foi retornada uma exceção
 				if (respMenorDeIdade != null) {
 					menssagem = respMenorDeIdade.getMessage();
 					JOptionPane.showMessageDialog(btnAvanc, menssagem, "ERRO!", 2);
 				}
+				// Se não, avança para a proxima tela
 				else {
+					// Instancia a telaEstadia
 					TelaCrianca telaCrianca = new TelaCrianca(responsavel);
 					telaCrianca.setVisible(true);
+					// Fecha a tela atual
 					dispose();
 					JOptionPane.showMessageDialog(btnAvanc, menssagem);
 				}

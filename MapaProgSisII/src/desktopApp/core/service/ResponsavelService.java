@@ -3,10 +3,17 @@ import desktopApp.core.entity.ResponsavelEntity;
 import java.util.ArrayList;
 import desktopApp.core.dao.ResponsavelDAO;
 
+/*
+ * Camada service para Responsavel
+ */
 public class ResponsavelService {
+	/* Cadastra um responsavel na camada DAO
+	 * @param ResponvavelEntity responsavel anos
+	 * Lança IdadeNaoPermitidaException caso o responsável tenha menos de 
+	 */
 	public void cadastrarResponsavel(ResponsavelEntity responsavel) throws IdadeNaoPermitidaException{
 		
-		// Obtem a idade do responvável
+		// Obtem a idade do responsável
 		int idade = responsavel.getIdade();
 		
 		// Verifica se é +18

@@ -13,8 +13,10 @@ public class ConexaoJDBC {
 	
 	private static Connection conn;
 	
+	// Conecta com o banco de dados
 	public static Connection getConexao() {
 		try {
+			// Verifica se já não existe a conexão com o banco
 			if (conn == null) {
 				conn = DriverManager.getConnection(URL, USER, PASSWORD);
 				return conn;

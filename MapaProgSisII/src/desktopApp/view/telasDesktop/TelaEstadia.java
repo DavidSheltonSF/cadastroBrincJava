@@ -81,13 +81,16 @@ public class TelaEstadia extends JFrame {
 		btnAvanc.setForeground(Color.BLACK);
 		btnAvanc.setFont(new Font("Arial", Font.PLAIN, 11));
 		btnAvanc.setBackground(UIManager.getColor("Button.background"));
+		// Evento para o botão avançar
 		btnAvanc.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				// Instancia e preenche um objeto EstadiaEntity
 				EstadiaEntity estadia = new EstadiaEntity();
 				estadia.setResponsavel(responsavel);
 				estadia.setCrianca(crianca);
 				estadia.setTempo(Integer.parseInt(txtTempo.getText()));
-			
+				
+				// Intancia o controler
 				EstadiaControler estadiaControler = new EstadiaControler();
 				estadiaControler.cadastrarEstadia(estadia);
 
